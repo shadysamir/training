@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+html {
+  direction: $direction;
+}
+
 body {
   margin: 0;
   padding: 0;

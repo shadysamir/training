@@ -1,11 +1,11 @@
-$float-direction: left;
-@if $direction = rtl {
+$float-direction: left !default;
+
+@if $direction == rtl {
   $float-direction: right;
+} @else if $direction == ltr {
+  $float-direction: left;
 }
 
-html {
-  direction: $direction;
-}
 
 .row {
   max-width: $row-max-width;
@@ -34,12 +34,31 @@ html {
   .small-#{$i} {
     width: percentage($i / $total-columns);
   }
+
+  @if $i < 12 {
+    .small-push-#{$i} {
+      #{$float-direction}: percentage($i / $total-columns);
+    }
+
+    .small-pull-#{$i} {
+      #{$float-direction}: percentage(-$i / $total-columns);
+    }
+  }
 }
 
 @media (#{$mobile-brekapoint}) {
   @for $i from 1 through $total-columns {
     .large-#{$i} {
       width: percentage($i / $total-columns);
+    }
+    @if $i < 12 {
+      .large-push-#{$i} {
+        #{$float-direction}: percentage($i / $total-columns);
+      }
+
+      .large-pull-#{$i} {
+        #{$float-direction}: percentage(-$i / $total-columns);
+      }
     }
   }
 }
