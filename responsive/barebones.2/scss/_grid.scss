@@ -1,0 +1,38 @@
+.row {
+  max-width: $row-max-width;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+
+
+.column {
+  float: $direction;
+  position: relative;
+  padding-left: $gutter-width /2;
+  padding-right: $gutter-width /2;
+  @if $column-border {
+    border: 1px solid;
+  }
+}
+
+@for $i from 1 through $total-columns {
+  .small-#{$i} {
+    width: percentage($i / $total-columns);
+  }
+}
+
+@media (#{$mobile-brekapoint}) {
+  @for $i from 1 through $total-columns {
+    .large-#{$i} {
+      width: percentage($i / $total-columns);
+    }
+  }
+}
