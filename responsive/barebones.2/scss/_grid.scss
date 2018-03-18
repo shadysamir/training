@@ -1,3 +1,12 @@
+$float-direction: left;
+@if $direction = rtl {
+  $float-direction: right;
+}
+
+html {
+  direction: $direction;
+}
+
 .row {
   max-width: $row-max-width;
   margin-left: auto;
@@ -11,10 +20,8 @@
   }
 }
 
-
-
 .column {
-  float: $direction;
+  float: $float-direction;
   position: relative;
   padding-left: $gutter-width /2;
   padding-right: $gutter-width /2;
