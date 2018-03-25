@@ -1,0 +1,27 @@
+.grid-container {
+  display: grid;
+  width: 500px;
+  grid-template-columns: repeat(6, 1fr) repeat(2, 2fr);
+  grid-template-rows: [row-1] 25% [row-2] 100px [row-3] auto;
+  grid-template-areas: "header header header header header" "main main main . sidebar";
+  grid-column-gap: 5px;
+  grid-row-gap: 10px;
+  justify-items: stretch; }
+
+.item-a {
+  grid-area: sidebar;
+  background-color: #F00;
+  justify-self: center; }
+
+.item-b {
+  grid-area: header;
+  background-color: #0f0;
+  align-self: end; }
+
+@media (min-width: 640px) {
+  .grid-container {
+    grid-template-columns: repeat(6, 1fr); }
+  .item-a {
+    grid-area: header; }
+  .item-b {
+    grid-area: sidebar; } }
